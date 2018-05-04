@@ -3,10 +3,11 @@
 all: lambdacalc
 	
 lambdacalc: src/*.cc src/*/*.cc src/*/*.h
-	g++ -g -O -Wall -Wextra -o lambdacalc src/*.cc src/*/*.cc -lreadline
+	mkdir build
+	g++ -g -O -Wall -Wextra -o build/lambdacalc src/*.cc src/*/*.cc -lreadline
 
 clean:
-	rm -f lambdacalc
+	rm -rf build/
 
 grammar:
 	rm -f src/input/__* 
