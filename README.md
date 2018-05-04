@@ -1,6 +1,64 @@
 # λ calculator
 
-This is one of my school projects: lambda calculus evaluator. It was made for Functional Programming course. It helped me to grasp the topic better.
+This is one of my school projects: [lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus) evaluator. It was made for Functional Programming course. It helped me to grasp the topic better.
+
+
+
+## What it do
+
+After launching the program user gets into an interactive prompt. Expected input is an 𝜆 term (or `q` or `quit` to quit program). For each 𝜆 term input program
+prints following informations:
+
+### input
+
+Rewritten input so that all functions have single argument and all substitutions are performed, also all brackets are print. (I will call it *canonical* notation.)
+
+E.g. for `\xyz.a` it is `\x.(\y.(\z.(a)))`. For `(\z.za)[a=x]` is canonical term `\z.(zx)`. Renaming is not performed, e.g. `(\z.z)[z=x]` is still `\z.(z)`.
+
+### input in de Bruijn
+
+Input in [de Bruijn index notation](https://en.wikipedia.org/wiki/De_Bruijn_index).
+
+E.g. for `\x.((\x.xx)ab)` it is `\.(((\.(00))a)b)`.
+
+### input as combinatorial term
+
+[Combinatory calculus](https://en.wikipedia.org/wiki/Combinatory_logic#Combinatory_terms)
+has some predefined terms: **I** (identity), **K** (constant) and **S** (application).
+This should be term rewritten with these combinatorial term.
+
+### free variables
+
+List of all [free variables](https://en.wikipedia.org/wiki/Lambda_calculus#Free_variables) in the term.
+
+### bound variables
+
+List of all [bound variables](https://en.wikipedia.org/wiki/Lambda_calculus#Free_and_bound_variables) of the term.
+
+### eager evaluation
+
+Input is evaluated eagerly. Arguments are evaluated from left to right, output is in canonical notation.
+
+E.g. `(\x.xy)(\a.a)` is evaluated to `y`. Term `(\x.y)((\x.xx)(\x.xx))` is evaluated to the same term, but with notice it was not evaluated completely.
+
+### lazy evaluation
+
+Input is evaluated lazily.
+
+E.g. term `(\x.y)((\x.xx)(\x.xx))` is evaluated to `y`.
+
+## is combinator
+
+Says whether term is [combinator](https://en.wikipedia.org/wiki/Lambda_calculus#Free_and_bound_variables).
+Combinator is other name for *closed* term (term that has no free variables).
+
+E.g. `\fx.fx` or `\f.(\x.f(xx))(\x.f(xx))` are combinator.
+(The latter is [fixed point combinator](https://en.wikipedia.org/wiki/Fixed-point_combinator#Fixed_point_combinators_in_lambda_calculus)).
+
+## JavaScript
+
+I do not remember what this is. But when 𝜆 term is a combinator, its representation(?) in JavaScript is printed.
+
 
 
 ## How to build and run
@@ -14,6 +72,7 @@ This compiles the project:
 Then it can be started:
 
     ./lambdacalc
+
 
 
 ## Notes
