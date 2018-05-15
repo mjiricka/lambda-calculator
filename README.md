@@ -12,25 +12,25 @@ for each 𝜆 term input with some information about the term.
 
 ## Input
 
-Any whitespaces are skipped.
+Foremost, any whitespace character is skipped.
 
 ### 𝜆 term
 
 𝜆 term is:
  - variable: any lowercase alphabetic character; e.g. `a` or `b`;
- - lambda abstraction: slash `\\`, then list of variables, dot `.` and then 𝜆 term; e.g. `\x.a`, `\xy.xbc`, `\x.\x.a`;
+ - lambda abstraction: slash `\`, then list of variables, dot `.` and then 𝜆 term; e.g. `\x.a`, `\xy.xbc`, `\x.\x.a`;
  - application: two consecutive 𝜆 terms, lambda abstractions must be enclosed within curly braces; e.g. `ab`, `a(\x.x)`, `(\x.x)(\y.y)`;
  - substitution: in this form: `(<𝜆 term>)[<variable>=<𝜆 term>]`, e.g. `(a)[b=c]`, `((a)[b=c])[a=\x.a]`.
 
 ### Church numerals
 
-Numbers represents [Church numerals](https://en.wikipedia.org/wiki/Church_encoding#Church_numerals). E.g. 1 is `\f.(\x.(fx))`, 10 is `\f.(\x.(f(f(f(f(f(f(f(f(f(fx)))))))))))`.
+Numbers represent [Church numerals](https://en.wikipedia.org/wiki/Church_encoding#Church_numerals). E.g. `1` is `\f.(\x.(fx))`, `10` is `\f.(\x.(f(f(f(f(f(f(f(f(f(fx)))))))))))`.
 
-Following operations with Church numerals are supported: addition (+), subtraction(-) and multiplication (*). Operations must be enclosed within curly braces. E.g. `(+)(1)(2)`.
+Following operations with Church numerals are supported: addition `+`, subtraction `-` and multiplication `*`. Operations must be enclosed within curly braces. E.g. `(+)(1)(2)`.
 
 ### Church booleans
 
-(Church booleans)[https://en.wikipedia.org/wiki/Church_encoding#Church_Booleans] are also build in:
+[Church booleans](https://en.wikipedia.org/wiki/Church_encoding#Church_Booleans) are also build in:
  - `T` is true;
  - `F` is false;
  - `A` is logical and;
@@ -43,7 +43,7 @@ E.g. `(A)(T)(F)` prints `\x.(\y.(y))`, which is both Church numeral for zero and
 
 There is one more operator for Church numerals comparison: `?`.
 
-E.g. `(?)(1)` results again into Church boolean for false.
+E.g. `(?)(1)` results again into Church boolean for false (`F`).
 
 
 ## Output
