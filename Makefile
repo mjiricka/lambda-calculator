@@ -3,7 +3,7 @@
 all: lambdacalc
 	
 lambdacalc: src/*.cc src/*/*.cc src/*/*.h
-	mkdir build
+	mkdir -p build
 	g++ -g -O -Wall -Wextra -o build/lambdacalc src/*.cc src/*/*.cc -lreadline
 
 clean:
